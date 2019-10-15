@@ -1,0 +1,85 @@
+- test:
+  name: 403-/auth/personage_change_pwd_msg/验证duan x 修改个人密码
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      pwd :
+      security :
+      phone_num :
+
+
+    check:
+      - code:   2000
+      - detail:  修改成功
+- test:
+  name: 403-/auth/personage_change_pwd_msg/手机号为空
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      pwd :
+      security :
+      phone_num :
+
+
+    check:
+      - code:   3036
+      - detail:  请输入您绑定的手机号
+- test:
+  name: 403-/auth/personage_change_pwd_msg/验证密码长度非4-24位
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      pwd :
+      security :
+      phone_num :
+
+
+    check:
+      - code:   2000
+      - detail:  修改成功
+- test:
+  name: 403-/auth/personage_change_pwd_msg/验证验证码错误
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      pwd :
+      security :
+      phone_num :
+
+
+    check:
+      - code:   3004
+      - detail:  验证码错误
+- test:
+  name: 403-/auth/personage_change_pwd_msg/输入非绑定的手机号
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      pwd :
+      security :
+      phone_num :
+
+
+    check:
+      - code:   3415
+      - detail:  您未绑定手机号

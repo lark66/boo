@@ -1,0 +1,39 @@
+- test:
+  name: signin_form接口_用户名和密码正确01
+  request:
+    method: POST
+    url: /auth/signin_form
+    cookies :
+    header :
+      Accept: application/json
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      username:  admin
+      password :  123456
+      type :  password
+    check :
+      - 登录成功
+
+
+- test:
+  name: signin_form接口_用户名和密码正确01
+  request:
+    method: POST
+    url: /auth/signin_form
+    cookies :
+    header :
+      Accept: application/json
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      username:  admin
+      password :  123456
+      type :  password
+
+  check :
+    - 失败

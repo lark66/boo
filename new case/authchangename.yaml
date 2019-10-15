@@ -1,0 +1,128 @@
+- test:
+  name: /user/auth_change_name/_01重置用户姓名
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 2000
+      detail : 操作成功
+- test:
+  name: /user/auth_change_name/_02用户姓名为空
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 3026
+      detail : 用户姓名为空
+- test:
+  name: /user/auth_change_name/接口_03姓名长度非1-12位
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 2000
+      detail : 操作成功
+- test:
+  name: /user/auth_change_name/_01重置用户姓名
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 3027
+      detail : 姓名长度位1-12位
+- test:
+  name: /user/auth_change_name/接口_03姓名存在特殊字符
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 3026
+      detail : 姓名不可包含特殊字符
+
+
+- test:
+  name: /user/auth_change_name/_04非注册的用户
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 3005
+      detail : 用户不存在
+- test:
+  name: /user/auth_change_name/_05验证姓名开头
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 3033
+      detail : 姓名开头必须是字母或中文
+- test:
+  name: /user/auth_change_name/_06验证修改管理员信息
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 3418
+      detail :管理员无法修改自身及其他管理员信息
+- test:
+  name: /user/auth_change_name/_07非系统用户
+  request:
+    method: POST
+    url: /user/auth_change_name
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      name :
+    check :
+      code : 4003
+      detail : 数据不存在

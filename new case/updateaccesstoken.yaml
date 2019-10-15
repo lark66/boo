@@ -1,0 +1,86 @@
+- test:
+  name: 507 507-更新access_token  01
+  request:
+    method: POST
+    url: /user/access_token/{access_token_id}
+    header :
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data :
+      url_list:
+      access_token_name :
+      life_time :
+
+
+  check:
+      - code: 2000
+      - detail: 申请成功
+- test:
+  name: 507-更新access_token 02
+  request:
+    method: POST
+    url: /user/access_token/{access_token_id}
+    header :
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data :
+      url_list:
+      access_token_name :
+      life_time :
+
+
+  check:
+      - code: 3425
+      - detail: 时间格式错误
+- test:
+  name: 507-更新access_token 03 url编号错误
+  request:
+    method: POST
+    url: /user/access_token/{access_token_id}
+    header :
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data :
+      url_list:
+      access_token_name :
+      life_time :
+
+
+  check:
+      - code: 3420
+      - detail: 必须选择正确的url编号
+- test:
+  name: 507-更新access_token 04名称无效
+  request:
+    method: POST
+    url: /user/access_token/{access_token_id}
+    header :
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data :
+      url_list:
+      access_token_name :
+      life_time :
+
+
+  check:
+      - code: 3424
+      - detail: access_token名称无效
+- test:
+  name: 505-更新access_token 05URL编号无效
+  request:
+    method: POST
+    url: /user/access_token/{access_token_id}
+    header :
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data :
+      url_list:
+      access_token_name :
+      life_time :
+
+5
+  check:
+      - code: 3421
+      - detail: URL编号无效
+

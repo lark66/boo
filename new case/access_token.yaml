@@ -1,0 +1,11 @@
+- test:
+  name: 505-查看当前用户的access_token列表 01
+  request:
+    method: GET
+    url: /user/access_token/
+    header :
+      token :
+
+  check:
+      - code: 2000
+      - detail:

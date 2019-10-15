@@ -1,0 +1,52 @@
+- test:
+  name: 406修改头像/auth/personage_change_head_pic/_01删除个人绑定手机号
+  request:
+    method: POST
+    url: /auth/personage_change_head_pic/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      security_code:
+      phone_num :
+    check :
+      head_pic:
+- test:
+  name: 407修改头像/auth/personage_change_head_pic/02验证未绑定的手机号
+  request:
+    method: POST
+    url: /auth/personage_change_head_pic/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      head_pic:
+    check :
+      code : 4003
+      detail : 数据不存在
+- test:
+  name: 407修改头像/auth/personage_change_head_pic/03验证失效的token
+  request:
+    method: POST
+    url: /auth/personage_change_head_pic/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      head_pic :
+    check :
+      code : 3019
+      detail : token检测失败，用户不存在
+- test:
+  name: 407 修改头像/auth/personage_change_head_pic/04 负数验证
+  request:
+    method: POST
+    url: /auth/personage_change_head_pic/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      head_pic:
+    check :
+      code : 3031
+      detail : 该参数值不能为负数

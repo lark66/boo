@@ -1,0 +1,96 @@
+- test:
+  name: 202-绑定手机号短信验证码接口_01绑定手机号
+  request:
+    method: POST
+    url: /user/auth_send_bind_msg/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 2000
+      - detail: 发送成功
+- test:
+  name: 202-绑定手机号短信验证码接口_02验证手机号已被注册
+  request:
+    method: POST
+    url: /user/auth_send_bind_msg/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3003
+      - detail: 手机号已被注册
+- test:
+  name: 202-绑定手机号短信验证码接口_03类型错误
+  request:
+    method: POST
+    url: /user/auth_send_bind_msg/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 4004
+      - detail: 类型错误
+- test:
+  name: 202-绑定手机号短信验证码接口_04验证手机号非数字
+  request:
+    method: POST
+    url: /user/auth_send_bind_msg/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3013
+      - detail: 手机号必须为纯数字
+- test:
+  name: 202-绑定手机号短信验证码接口_09验证手机非11位
+  request:
+    method: POST
+    url: /user/auth_send_bind_msg/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3014
+      - detail: 手机号必须是11位
+- test:
+  name: 202-绑定手机号短信验证码接口_09手机号为空
+  request:
+    method: POST
+    url: /user/auth_send_bind_msg/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3036
+      - detail: 请输入您绑定的手机号

@@ -1,0 +1,46 @@
+- test:
+  name: 308-/user/auth_single/{user_id}01_查找单个用户
+  request:
+    method: GET
+    url: /user/auth_single/{user_id}
+    headers:
+      token :
+
+    data:
+      user_id :
+
+
+    check:
+      - code:
+      - detail:
+
+- test:
+  name: 308-/user/auth_single/{user_id}02_验证userid非数字
+  request:
+    method: GET
+    url: /user/auth_single/{user_id}
+    headers:
+      token :
+
+    data:
+      user_id :
+
+
+    check:
+      - code: 4001
+      - detail:  参数值必须为数字
+- test:
+  name: 308-/user/auth_single/{user_id}02_验证非存在的数据
+  request:
+    method: GET
+    url: /user/auth_single/{user_id}
+    headers:
+      token :
+
+    data:
+      user_id :
+
+
+    check:
+      - code: 4003
+      - detail:  数据不存在

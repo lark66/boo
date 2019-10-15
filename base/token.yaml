@@ -1,0 +1,30 @@
+- test:
+  name: 01验证正确token
+  request:
+    method: POST
+    url: /auth/token/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+      access_token :
+
+    data :
+      token : cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+    check :
+      - code  : 2000
+      - detail : token检测成功
+- test:
+  name: 02验证不存在的token
+  request:
+    method: POST
+    url: /auth/token/
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+      token:
+      access_token:
+    data :
+      token : cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+    check :
+      - code  : 3009
+      - detail : token检测失败,token不存在
+、

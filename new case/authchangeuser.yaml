@@ -1,0 +1,57 @@
+- test:
+  name: /user/auth_change_user/_01重置用户名密码
+  request:
+    method: POST
+    url: /user/auth_change_user/
+    headers:
+
+      token :
+    data:
+      user_id:
+      identification_code :
+    check :
+      code : 2000
+      detail : 检测通过
+- test:
+  name: /user/auth_change_user/_01重置用户名密码
+  request:
+    method: POST
+    url: /user/auth_change_user/
+    headers:
+
+      token :
+    data:
+      user_id:
+      identification_code :
+    check :
+      code : 2000
+      detail : 检测通过
+- test:
+  name: /user/auth_change_user/_01重置用户名密码
+  request:
+    method: POST
+    url: /user/auth_change_user/
+    headers:
+
+      token :
+    data:
+      user_id:
+      identification_code :
+    check :
+      code : 3416
+      detail : 管理员验证失败，请重新输入密码验证
+- test:
+  name: /user/auth_change_user/_02重置用户名密码
+  request:
+    method: POST
+    url: /user/auth_change_user/
+    headers:
+
+      token :
+    data:
+      user_id:
+      identification_code :
+    check :
+      code : 3005
+      detail : 用户不存在
+

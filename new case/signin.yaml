@@ -1,0 +1,129 @@
+- test:
+  name: 01用户名和密码登录
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 2000
+      - detail: 登录成功
+- test:
+  name: 02验证登录方法password
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username: 18518182465
+      password: 111111
+      type: password
+      secutity_code: 1123
+
+
+    check:
+      - code: 3018
+      - detail: 请选择正确的登陆方法'password'或'digits'
+- test:
+  name: 03用户名为空
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username:
+      password: 111111
+      type: password
+      secutity_code: 1123
+
+    check:
+      - code: 3006
+      - detail: 用户名或密码为空
+- test:
+  name: 04验证用户未认证
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username: 18518182465
+      password: 111111
+      type: password
+      secutity_code: 1123
+
+    check:
+      - code: 4000
+      - detail: 用户未认证，请联系管理员审核
+- test:
+  name: 05用户名已被禁用
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username: 18518182465
+      password: 111111
+      type: password
+      secutity_code: 1123
+
+    check:
+      - code: 3020
+      - detail: 用户已被禁用
+- test:
+  name: 06验证手机非空
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username: 18518182465
+      password: 111111
+      type: password
+      secutity_code: 1123
+
+    check:
+      - code: 3012
+      - detail: 手机号码不能为空
+- test:
+  name: 07 验证验证码错误
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum : 18518182465
+      password : 111111
+      name : ceshi
+      secutity_code : 1234
+
+    check:
+      - code: 3004
+      - detail: 验证码错误
+- test:
+  name: 08验证手机号未注册
+  request:
+    method: POST
+    url: /auth/signin_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum : 18518182465
+      password : 111111
+      name : ceshi
+      secutity_code : 1234
+
+    check:
+      - code: 3035
+      - detail: 手机号未注册

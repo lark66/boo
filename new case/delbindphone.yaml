@@ -1,0 +1,57 @@
+- test:
+  name: /auth/del_bind_phone/_01删除个人绑定手机号
+  request:
+    method: POST
+    url: /auth/del_bind_phone/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      security_code:
+      phone_num :
+    check :
+      code : 2000
+      detail : 已解除
+- test:
+  name: /auth/del_bind_phone/_01删除个人绑定手机号
+  request:
+    method: POST
+    url: /auth/del_bind_phone/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      security_code:
+      phone_num :
+    check :
+      code : 3415
+      detail : 您未绑定手机号
+- test:
+  name: /auth/del_bind_phone/_01删除个人绑定手机号
+  request:
+    method: POST
+    url: /auth/del_bind_phone/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      security_code:
+      phone_num :
+    check :
+      code : 3004
+      detail : 验证码错误
+- test:
+  name: /auth/del_bind_phone/_01删除个人绑定手机号
+  request:
+    method: POST
+    url: /auth/del_bind_phone/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      security_code:
+      phone_num :
+    check :
+      code : 3036
+      detail : 请输入您绑定的手机号
+

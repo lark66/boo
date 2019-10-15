@@ -1,0 +1,13 @@
+- test:
+  name: 301-获取随机用户名_01
+  request:
+    method: GET
+    url: /user/random_username/
+    headers:
+      token :
+     # Content-Type : application/x-www-form-urlencoded
+
+
+    check:
+      - code: 2000
+      - detail:

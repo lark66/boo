@@ -1,0 +1,46 @@
+- test:
+  name: 401-/auth/personage_chang_01 修改个人密码
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      old_password :
+      new_password :
+
+
+    check:
+      - code:   2000
+      - detail:  修改成功
+- test:
+  name: 401-/auth/personage_chang_02 验证密码长度非4-24
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      old_password :
+      new_password :
+    check:
+      - code: 3017
+      - detail: 密码长度为4-24
+- test:
+  name: 401-/auth/personage_chang_03验证修改密码和原密码不一直
+  request:
+    method: POST
+    url: /auth/personage_change_pwd/
+    headers:
+      token :
+
+    data:
+      old_password :
+      new_password :
+
+
+    check:
+      - code: 3029
+      - detail: 原密码错误

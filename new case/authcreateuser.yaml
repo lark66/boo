@@ -1,0 +1,128 @@
+- test:
+  name: 302-创建新用户接口_01
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 2000
+      - detail: 新建成功
+- test:
+  name: 302-创建新用户接口_02用户姓名为空
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 3025
+      - detail: 用户姓名为空
+- test:
+  name: 302-创建新用户接口_03验证用户姓名包含特殊字符
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 3026
+      - detail: 姓名不可包含特殊字符
+- test:
+  name: 302-创建新用户接口_04验证用户名长度
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 3410
+      - detail: 用户名长度为
+- test:
+  name: 302-创建新用户接口_05验证用户名包含特殊字符
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 3032
+      - detail: 用户名不可包含特殊字符
+- test:
+  name: 302-创建新用户接口_06验证用户名开发必须是字母
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 3037
+      - detail: 用户名开头必须是字母或数字
+- test:
+  name: 302-创建新用户接口_07验证用户名为空
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 3010
+      - detail: 用户名不能为空
+- test:
+  name: 302-创建新用户接口_08验证姓名开头必须是字母或中文
+  request:
+    method: POST
+    url: /user/auth_create_user/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      name :
+      username:
+
+    check:
+      - code: 3410
+      - detail: 姓名开头必须是字母或中文

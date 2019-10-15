@@ -1,0 +1,28 @@
+- test:
+  name: 501-/user/reset_sys 01清楚系统所有数据
+  request:
+    method: GET
+    url: /user/reset_sys/
+    headers :
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data :
+      identification_code :
+
+    check:
+      - code:  2000
+      - detail:
+- test:
+  name: 501-/user/reset_sys 02 密码错误
+  request:
+    method: GET
+    url: /user/reset_sys/
+    headers :
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      identification_code :
+
+    check:
+      - code:  3416
+      - detail: 管理员验证失败，请重新输入密码验证

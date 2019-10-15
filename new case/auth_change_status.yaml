@@ -1,0 +1,49 @@
+- test:
+  name: 303-修改用户接口_01
+  request:
+    method: POST
+    url: /user/auth_change_status/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+     user_id :
+     user_status :
+
+
+    check:
+      - code: 2000
+      - detail: 操作成功
+- test:
+  name: 303-修改用户接口_02验证用户不存在
+  request:
+    method: POST
+    url: /user/auth_change_status/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      user_id:
+      user_status:
+
+    check:
+      - code: 3402
+      - detail: 状态参数错误
+- test:
+  name: 303-修改用户接口_03验证数据不存在
+  request:
+    method: POST
+    url: /user/auth_change_status/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+      user_id:
+      user_status:
+
+    check:
+      - code: 4003
+      - detail: 数据不存在

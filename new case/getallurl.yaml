@@ -1,0 +1,13 @@
+- test:
+  name: "503浏览所有url信息"
+  request:
+    method: GET
+    url: /user/get_all_url/
+    cookies :
+    header :
+      token  :
+
+    data :
+  check :
+    code :
+    detail :

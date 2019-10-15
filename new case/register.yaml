@@ -1,0 +1,167 @@
+- test:
+  name: 01正确填写信息注册register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum : 18518182465
+      password : 111111
+      name : ceshi
+      secutity_code : 1234
+
+    check:
+      - code: 2000
+      - detail: 注册成功
+- test:
+  name: 02用户名为空register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum : 18518182465
+      password : 111111
+      name :
+      secutity_code : 1234
+
+    check:
+      - code: 3006
+- test:
+  name: 03密码为空register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum : 18518182465
+      password :
+      name :  ceshi
+      secutity_code : 1234
+
+    check:
+      - code: 3006
+
+- test:
+  name: 04手机号非数字register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+        - code: 3013
+- test:
+  name: 05手机号非11位register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+      - code: 3014
+- test:
+  name: 06密码长度非4-24位register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+      - code: 3017
+- test:
+  name: 07姓名长度非4-24位register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+      - code: 3027
+- test:
+  name: 08姓名包含特殊字符register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+      - code: 3026
+- test:
+  name: 09手机号已注册register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+      - code: 3027
+- test:
+  name: 10 验证码验证失败register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+      - code: 3008
+- test:
+  name: 11验证码错误register_from
+  request:
+    method: POST
+    url: /auth/register_form/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      phonenum :
+      password :
+      name :
+      secutity_code :
+
+    check:
+      - code: 3004

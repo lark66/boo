@@ -1,0 +1,32 @@
+- test:
+  name: 502重置admin 01
+  request:
+    method: POST
+    url: /user/reset_sys/admin/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+     identification_code :
+
+
+    check:
+      - code: 2000
+      - detail: 已重置
+- test:
+  name: 502重置admin 02 无效code
+  request:
+    method: POST
+    url: /user/reset_sys/admin/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+
+    data:
+     identification_code :
+
+
+    check:
+      - code: 3416
+      - detail: 管理员验证失败，请重新输入密码验证

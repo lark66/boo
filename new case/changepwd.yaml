@@ -1,0 +1,136 @@
+- config:
+    request :
+      product : htts://192.168.0.185:7700
+- test:
+  name: "01 短信修改密码成功"
+  request:
+    method: POST
+    url: /auth/change_pwd_msg/
+    cookies :
+    header :
+      Accept: application/x-www-form-urlencoded
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      tel:  13693653825
+      pwd :  123456
+      security : 1123
+    chenk :
+      code : 2000
+      detail : 密码修改成功
+- test:
+  name: "02  类型错误验证"
+  request:
+    method: POST
+    url: /auth/change_pwd_msg/
+    cookies :
+    header :
+      Accept: application/x-www-form-urlencoded
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      tel:  13693653825
+      pwd :  123456
+      security : dhk
+    chenk :
+      code : 4004
+      detail : 类型错误
+- test:
+  name: "03 验证验证码发送次数/"
+  request:
+    method: POST
+    url: /auth/change_pwd_msg/
+    cookies :
+    header :
+      Accept: application/x-www-form-urlencoded
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      tel:  13693653825
+      pwd :  123456
+      security : 1123
+    chenk :
+      code : 3007
+      detail : 验证码发送频率超过限制
+- test:
+  name: "04 验证短信请求次数"
+  request:
+    method: POST
+    url: /auth/change_pwd_msg/
+    cookies :
+    header :
+      Accept: application/x-www-form-urlencoded
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      tel:  13693653825
+      pwd :  123456
+      security : 1123
+    chenk :
+      code : 3011
+      detail : 已达到当前时间短信请求次数最大限制，1小时后可从新发送
+- test:
+  name: "05 验证手机号未注册"
+  request:
+    method: POST
+    url: /auth/change_pwd_msg/
+    cookies :
+    header :
+      Accept: application/x-www-form-urlencoded
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      tel:  13693653825
+      pwd :  123456
+      security : 1123
+    chenk :
+      code : 3035
+      detail :手机号未注册
+- test:
+  name: "06 用户名必填项验证/"
+  request:
+    method: POST
+    url: /auth/change_pwd_msg/
+    cookies :
+    header :
+      Accept: application/x-www-form-urlencoded
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      tel:  13693653825
+      pwd :  123456
+      security : 1123
+    chenk :
+      code : 3026
+      detail : 用户名或密码为空
+- test:
+  name: "07密码为空/"
+  request:
+    method: POST
+    url: /auth/change_pwd_msg/
+    cookies :
+    header :
+      Accept: application/x-www-form-urlencoded
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      tel:  13693653825
+      pwd :  123456
+      security : 1123
+    chenk :
+      code : 3026
+      detail : 用户名或密码为空

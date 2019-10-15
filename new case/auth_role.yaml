@@ -1,0 +1,100 @@
+- test:
+  name: auth_role_01修改用户角色
+  request:
+    method: POST
+    url: /user/auth_role/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      role :
+    check :
+      code : 2000
+      detail : 操作成功
+- test:
+  name: auth_role_02验证参数为空
+  request:
+    method: POST
+    url: /user/auth_role/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      role :
+    check :
+      code : 3401
+      detail : 参数值为空或参数不存在
+- test:
+  name: auth_role_03用户不存在
+  request:
+    method: POST
+    url: /user/auth_role/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      role :
+    check :
+      code : 3405
+      detail : 用户不存在
+
+- test:
+  name: auth_role_04新数据与旧数据相同，数据库将不会更新
+  request:
+    method: POST
+    url: /user/auth_role/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      role :
+    check :
+      code : 3419
+      detail : 新数据与旧数据相同，数据库将不会更新
+- test:
+  name: auth_role_05验证普通用户修改为管理员角色
+  request:
+    method: POST
+    url: /user/auth_role/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      role :
+    check :
+      code : 3419
+      detail : 无法将普通用户修改为管理员角色
+
+- test:
+  name: auth_role_06验证角色编号错误
+  request:
+    method: POST
+    url: /user/auth_role/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      role :
+    check :
+      code : 3409
+      detail : 角色编号编号
+- test:
+  name: auth_role_06验证修改管理员信息
+  request:
+    method: POST
+    url: /user/auth_role/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+      token :
+    data:
+      user_id : 18518182465
+      role :
+    check :
+      code : 3409
+      detail : 管理员无法修改自身及其他管理员信息

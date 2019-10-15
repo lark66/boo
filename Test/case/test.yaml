@@ -1,0 +1,11 @@
+name: login
+request:
+    url: http://192.168.0.185:7700/auth/token/
+    method: POST
+    headers:
+
+    data:
+      token : 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+
+validators:
+    - {"check": "code","expeted":200}

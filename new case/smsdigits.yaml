@@ -1,0 +1,144 @@
+- test:
+  name: 201-注册、登录、修改密码接口_01用户名和密码登录
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 2000
+      - detail: 验证码发送成功
+- test:
+  name:  201-注册、登录、修改密码接口_02验证手机号已被注册
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3003
+      - detail: 手机号已被注册
+- test:
+  name:  201-注册、登录、修改密码接口_03手机号非数字
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3013
+      - detail: 手机号必须为纯数字
+- test:
+  name: 201-注册、登录、修改密码接口_04手机号非11位
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3014
+      - detail: 手机必须是11位
+- test:
+  name: 201-注册、登录、修改密码接口_05短息次数
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3011
+      - detail: 短信服务超过发送上线
+- test:
+  name: 201-注册、登录、修改密码接口_06验证码发送频率限制
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3007
+      - detail: 验证码发送频率超过限制
+- test:
+  name: 201-注册、登录、修改密码接口_07 手机号未注册
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3035
+      - detail: 手机号未注册
+- test:
+  name: 201-注册、登录、修改密码接口_08 手机号为空
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3012
+      - detail: 手机号不能为空
+- test:
+  name: 201-注册、登录、修改密码接口_09验证手机号未绑定
+  request:
+    method: POST
+    url: /auth/sms/digits/
+    headers:
+      Content-Type : application/x-www-form-urlencoded
+    data:
+      username : 18518182465
+      password : 111111
+      type : password
+      secutity_code : 1123
+
+    check:
+      - code: 3415
+      - detail: 您未绑定手机号

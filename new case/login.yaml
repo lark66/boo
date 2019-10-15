@@ -1,0 +1,206 @@
+- config:
+    request :
+      product : htts://192.168.0.185:7700
+- test:
+  name: "signin_form接口_用户名和密码正确01"
+  request:
+    method: POST
+    url: /auth/signin_form
+    cookies :
+    header :
+      Accept: application/json
+      Authorization: cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5
+      Origin:   http://192.168.0.185
+      Referer : http://192.168.0.185/
+      User-Agent:  Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+    data :
+      username:  admin
+      password :  123456
+      type :  password
+
+  validators :
+    - { check : status_code, comparator  : eq ,expeted : 200}
+
+     #   错误码	错误详细信息
+      #  3018	请选择正确的登陆方法'password'或'digits'
+      #  3006	用户名或密码为空
+      #  4000	用户未认证，请联系管理员审核
+       # 3020	用户已被禁用
+        #4007	数据异常
+        #3002	密码错误
+        #3012	手机号码不能为空
+        #3004	验证码错误
+        #3035	手机号未注册
+- test:
+  name: signin_form接口_用户名和密码登录 密码错误02
+  request:
+    method: "POST"
+    url: /auth/signin_form
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "admin"
+      password: "123456"
+      type: "password"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+
+- test:
+  name: signin_form接口_用户名和密码登录 密码为空03
+  request:
+    method: "POST"
+    url: "/auth/signin_form?"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "admin"
+      password: "123456"
+      type: "password"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+- test:
+  name: signin_form接口_用户名和密码登录 用户不存在04
+  request:
+    method: "POST"
+    url: "/auth/signin_form"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "admin"
+      password: "123456"
+      type: "password"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+
+- test:
+  name: signin_form接口_用户和密码为空05
+  request:
+    method: "POST"
+    url: "/auth/signin_form"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "admin"
+      password: "123456"
+      type: "password"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+- test:
+  name: signin_form接口_用户和密码为空06
+  request:
+    method: "POST"
+    url: "/auth/signin_form"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: ""
+      password: ""
+      type: "password"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+- test:
+  name: signin_form接口_用户和密码为空05
+  request:
+    method: "POST"
+    url: "/auth/signin_form"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "admin"
+      password: "123456"
+      type: "password"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+- test:
+  name: signin_form接口_手机号和密码都正确类型digits06
+  request:
+    method: "POST"
+    url: "/auth/signin_form"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "13693653825"
+      password: "123456"
+      type: "digits"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+- test:
+  name: signin_form接口_密码错误_类型digits07
+  request:
+    method: "POST"
+    url: "/auth/signin_form"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "13693653825"
+      password: "098776"
+      type: "digits"
+
+  validators :
+    - { "check" : "code","expeted" : 200}
+- test:
+  name: signin_form接口_手机号未注册_类型digits08
+  request:
+    method: "POST"
+    url: "/auth/signin_form/"
+    cookies :
+    header :
+      Accept: 'application/json'
+      Authorization: 'cde7fb1e3f2db079f053483a93e4ca9f62373433dd683499db4de5f5'
+      Origin:   "http://192.168.0.185"
+      Referer : "http://192.168.0.185/"
+      User-Agent:  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+    data :
+      username: "18518182465"
+      password: "098776"
+      type: "digits"
+
+  validators :
+    - { "check" : "code","expeted" : 200}

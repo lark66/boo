@@ -1,0 +1,86 @@
+- test:
+  name: 404-/auth/bind_phone/绑定个人手机
+  request:
+    method: POST
+    url: /auth/bind_phone/
+    headers:
+      token :
+
+    data:
+      pyhone_num :
+      security_code :
+
+
+    check:
+      - code:   2000
+      - detail:  修改成功
+- test:
+  name: 404-/auth/bind_phone/绑定个人手机 手机号长度验证
+  request:
+    method: POST
+    url: /auth/bind_phone/
+    headers:
+      token :
+      Content-Type : application/x-www-form-urlencoded
+
+    data:
+      pthone_num:
+      security_code :
+
+
+
+
+    check:
+      - code:   3014
+      - detail:  手机号必须是11位
+- test:
+  name: 404-/auth/bind_phone/验证绑定手机号非纯数字
+  request:
+    method: POST
+    url: /auth/bind_phone/
+    headers:
+      token :
+
+    data:
+
+      phone_num :
+      security_code :
+
+
+    check:
+      - code:   3013
+      - detail:  手机号码必须为纯数字
+- test:
+  name: 404-/auth/bind_phone/验证手机号已被注册过
+  request:
+    method: POST
+    url: /auth/bind_phone/
+    headers:
+      token :
+
+    data:
+
+      phone_num :
+      security_code :
+
+
+    check:
+      - code:   3003
+      - detail:  手机号已被注册
+- test:
+  name: 404-/auth/bind_phone/绑定手机验证码错误
+  request:
+    method: POST
+    url: /auth/bind_phone/
+    headers:
+      token :
+
+    data:
+
+      phone_num :
+      security_code :
+
+
+    check:
+      - code:   3004
+      - detail: 验证码错误
